@@ -1,0 +1,28 @@
+def build_dynamic_prompt(user_question, schema_context, query_complexity):
+    base_template = get_base_template(query_complexity)
+    
+    # Add relevant examples based on question type
+    examples = get_relevant_examples(user_question)
+    
+    # Add business rules if applicable
+    business_rules = get_applicable_business_rules(user_question)
+    
+    # Assemble final prompt
+    prompt = f"""
+    {base_template}
+    
+    SCHEMA CONTEXT:
+    {schema_context}
+    
+    EXAMPLES:
+    {examples}
+    
+    BUSINESS RULES:
+    {business_rules}
+    
+    QUESTION: {user_question}
+    
+    SQL:
+    """
+    
+    return prompt

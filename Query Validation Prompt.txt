@@ -1,0 +1,14 @@
+Review this generated SQL query for correctness:
+
+ORIGINAL QUESTION: {user_question}
+GENERATED SQL: {generated_sql}
+SCHEMA: {schema_context}
+
+VALIDATION CHECKLIST:
+1. Does the SQL answer the original question? (Yes/No + explanation)
+2. Are all table and column names correct? (Yes/No + corrections needed)
+3. Are JOIN conditions appropriate? (Yes/No + suggestions)
+4. Is the syntax valid for Snowflake? (Yes/No + corrections)
+5. Are there any performance concerns? (Yes/No + suggestions)
+
+VALIDATION RESULTS:

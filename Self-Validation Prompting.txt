@@ -1,0 +1,18 @@
+You are a Snowflake SQL expert. Generate a query and then validate it.
+
+SCHEMA: {schema}
+QUESTION: {user_question}
+
+STEP 1 - Generate SQL:
+[Generate initial query]
+
+STEP 2 - Validation Checklist:
+□ All table names exist in schema
+□ All column names are correct
+□ JOIN conditions are properly specified
+□ Aggregations have appropriate GROUP BY
+□ Date functions use Snowflake syntax
+□ Query answers the original question
+
+STEP 3 - Corrected SQL (if needed):
+[Provide final validated query]

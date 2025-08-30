@@ -1,0 +1,20 @@
+def build_schema_context(user_question, full_schema):
+    # Extract entities from question
+    entities = extract_entities(user_question)
+    
+    # Find relevant tables
+    relevant_tables = find_relevant_tables(entities, full_schema)
+    
+    # Include related tables via foreign keys
+    extended_tables = include_related_tables(relevant_tables, full_schema)
+    
+    # Build concise schema context
+    context = build_context_string(extended_tables)
+    
+    return context
+
+# Example usage
+schema_context = build_schema_context(
+    "Show me customer orders from last month",
+    full_database_schema
+)

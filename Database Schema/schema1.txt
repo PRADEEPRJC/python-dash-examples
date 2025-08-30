@@ -1,0 +1,67 @@
+{
+  "database_schema": {
+    "tables": [
+      {
+        "name": "policies",
+        "description": "Stores insurance policy information",
+        "columns": [
+          {"name": "policy_id", "type": "INT", "description": "Unique identifier for each policy"},
+          {"name": "issue_year", "type": "INT", "description": "Year the policy was issued"},
+          {"name": "business_type", "type": "VARCHAR", "description": "Type of business: 'new' or 'renewal'"},
+          {"name": "customer_id", "type": "INT", "description": "Foreign key linking to customers"}
+        ]
+      },
+      {
+        "name": "customers",
+        "description": "Stores customer details",
+        "columns": [
+          {"name": "customer_id", "type": "INT", "description": "Unique identifier for each customer"},
+          {"name": "name", "type": "VARCHAR", "description": "Customer's full name"},
+          {"name": "region", "type": "VARCHAR", "description": "Customer's geographic region"}
+        ]
+      },
+      {
+        "name": "claims",
+        "description": "Stores insurance claim details",
+        "columns": [
+          {"name": "claim_id", "type": "INT", "description": "Unique identifier for each claim"},
+          {"name": "policy_id", "type": "INT", "description": "Foreign key linking to policies"},
+          {"name": "claim_amount", "type": "DECIMAL", "description": "Amount claimed"},
+          {"name": "claim_date", "type": "DATE", "description": "Date of claim"}
+        ]
+      },
+      {
+        "name": "agents",
+        "description": "Stores insurance agent information",
+        "columns": [
+          {"name": "agent_id", "type": "INT", "description": "Unique identifier for each agent"},
+          {"name": "name", "type": "VARCHAR", "description": "Agent's full name"},
+          {"name": "region", "type": "VARCHAR", "description": "Agent's operating region"}
+        ]
+      }
+    ],
+    "joins": [
+      {
+        "left_table": "policies",
+        "left_column": "customer_id",
+        "right_table": "customers",
+        "right_column": "customer_id",
+        "description": "Join policies to customers on customer_id"
+      },
+      {
+        "left_table": "claims",
+        "left_column": "policy_id",
+        "right_table": "policies",
+        "right_column": "policy_id",
+        "description": "Join claims to policies on policy_id"
+      },
+      {
+        "left_table": "agents",
+        "left_column": "region",
+        "right_table": "customers",
+        "right_column": "region",
+        "description": "Join agents to customers based on region"
+      }
+    ]
+  }
+}
